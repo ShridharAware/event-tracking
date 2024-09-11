@@ -14,26 +14,38 @@ const createAdmin = async (userData) => {
     await user.save();
     return user;
   } catch (error) {
-    throw error;
+    return { error: error.message };
   }
 };
 
 const getUsers = async () => {
-  return await User.find();
+  try {
+    return await User.find();
+  } catch (error) {
+    return { error: error.message };
+  }
 };
 
 const updateUser = async (id, updateData) => {
-  return await User.findByIdAndUpdate(
-    new mongoose.Types.ObjectId(id),
-    updateData,
-    {
-      new: true,
-    }
-  );
+  try {
+    return await User.findByIdAndUpdate(
+      new mongoose.Types.ObjectId(id),
+      updateData,
+      {
+        new: true,
+      }
+    );
+  } catch (error) {
+    return { error: error.message };
+  }
 };
 
 const deleteUser = async (id) => {
-  return await User.findByIdAndDelete(id);
+  try {
+    return await User.findByIdAndDelete(id);
+  } catch (error) {
+    return { error: error.message };
+  }
 };
 
 module.exports = {

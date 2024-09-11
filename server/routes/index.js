@@ -2,6 +2,7 @@ const express = require("express");
 const userRoute = require("./user.route");
 const adminRoute = require("./admin.route");
 const authRoute = require("./auth.route");
+const memberRoute = require("./member.route");
 const router = express.Router();
 const defaultRoutes = [
   // User routes
@@ -42,6 +43,24 @@ const defaultRoutes = [
   {
     path: "/token",
     route: authRoute,
+  },
+
+  // Member routes
+  {
+    path: "/getMembers",
+    route: memberRoute,
+  },
+  {
+    path: "/createMember",
+    route: memberRoute,
+  },
+  {
+    path: "/updateMember",
+    route: memberRoute,
+  },
+  {
+    path: "/deleteMember",
+    route: memberRoute,
   },
 ];
 defaultRoutes.forEach((route) => {
